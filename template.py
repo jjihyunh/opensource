@@ -13,29 +13,24 @@ from sklearn.svm import SVC
 
 def load_dataset(dataset_path):
 	return pd.read_csv(dataset_path)
-	#To-Do: Implement this function
 
 def dataset_stat(dataset_df):
 	return data_df.shape[1]-1,data_df.groupby("target").size()[0],data_df.groupby("target").size()[1]
-	#To-Do: Implement this function
 
 def split_dataset(dataset_df, testset_size):
 	x=dataset_df.drop(columns="target",axis=1)
 	y=dataset_df["target"]
 	return train_test_split(x,y,test_size=testset_size,random_state=2)
-	#To-Do: Implement this function
 
 def decision_tree_train_test(x_train, x_test, y_train, y_test):
 	dt_cls=DecisionTreeClassifier()
 	dt_cls.fit(x_train,y_train)
 	return accuracy_score(y_test,dt_cls.predict(x_test)),precision_score(y_test,dt_cls.predict(x_test)),recall_score(y_test,dt_cls.predict(x_test))
-	#To-Do: Implement this function
 
 def random_forest_train_test(x_train, x_test, y_train, y_test):
 	rf_cls=RandomForestClassifier()
 	rf_cls.fit(x_train,y_train)
 	return accuracy_score(y_test, rf_cls.predict(x_test)), precision_score(y_test,rf_cls.predict(x_test)), recall_score(y_test,rf_cls.predict(x_test))
-	#To-Do: Implement this function
 
 def svm_train_test(x_train, x_test, y_train, y_test):
 	svm_pipe=make_pipeline(
@@ -44,7 +39,6 @@ def svm_train_test(x_train, x_test, y_train, y_test):
 	)
 	svm_pipe.fit(x_train,y_train)
 	return accuracy_score(y_test, svm_pipe.predict(x_test)), precision_score(y_test,svm_pipe.predict(x_test)), recall_score(y_test,svm_pipe.predict(x_test))
-	#To-Do: Implement this function
 
 def print_performances(acc, prec, recall):
 	#Do not modify this function!
